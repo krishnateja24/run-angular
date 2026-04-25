@@ -1,0 +1,64 @@
+<div class="page">
+
+  <!-- Floating symbols background -->
+  <div class="heart-bg" aria-hidden="true">
+    @for (h of floatingSymbols; track $index) {
+      <span
+        class="floating-symbol"
+        [style.left.vw]="h.left"
+        [style.font-size.rem]="h.fontSize"
+        [style.animation-duration.s]="h.duration"
+        [style.animation-delay.s]="h.delay">{{ h.symbol }}</span>
+    }
+  </div>
+
+  <!-- Background glow orbs -->
+  <div class="orb orb-1" aria-hidden="true"></div>
+  <div class="orb orb-2" aria-hidden="true"></div>
+  <div class="orb orb-3" aria-hidden="true"></div>
+
+  <!-- Main card -->
+  <article class="card">
+    <div class="card-glow" aria-hidden="true"></div>
+
+    <div class="icon-row" aria-hidden="true">
+      <span class="bounce-emoji">🏃‍♀️</span>
+      <span class="bounce-emoji" style="animation-delay:0.2s">👟</span>
+      <span class="bounce-emoji" style="animation-delay:0.4s">🌸</span>
+    </div>
+
+    <h1 class="heading">Hey, wanna run? 🏃</h1>
+
+    <p class="subtext">
+      Want to go for a run together<br>
+      this <strong class="highlight">Monday morning?</strong> 🌸
+    </p>
+
+    <div class="date-badge">📅&nbsp; Monday, April 27 · Morning Run</div>
+
+    <div class="buttons-area">
+      <button
+        class="yes-btn"
+        [style.font-size]="yesFontSize + 'rem'"
+        [style.padding]="yesPadV + 'px ' + yesPadH + 'px'"
+        (click)="onYesClick()"
+        aria-label="Yes, let's go for a run!">
+        Yes! 💖
+      </button>
+    </div>
+
+    <p class="hint-text" [class.visible]="noEscapeCount > 0">
+      <em>Can't escape that easily! 😄</em>
+    </p>
+  </article>
+
+  <!-- No button at page level – avoids backdrop-filter stacking context -->
+  <button
+    class="no-btn"
+    [style.top]="noBtnTop + 'px'"
+    [style.left]="noBtnLeft + 'px'"
+    (click)="onNoClick()">
+    {{ noBtnLabel }}
+  </button>
+
+</div>
